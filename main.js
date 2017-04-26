@@ -20,7 +20,7 @@ const discordSetup = require("./discord2telegram/setup");
  *************/
 
 // Create a Telegram bot
-const tgBot = new BotAPI(settings.telegram.auth.token);
+const tgBot = new BotAPI(process.env.TELEGRAM_TOKEN || settings.telegram.auth.token);
 
 // Create a Discord bot
 const dcBot = new Discord.Client();

@@ -54,7 +54,7 @@ function setup(tgBot, dcBot) {
 		}
 
 		// Pass it on to Discord
-		dcBot.channels.get(settings.discord.channelID).sendMessage(`**${fromName}**: ${message.text}`)
+		dcBot.channels.get(process.env.DISCORD_CHANNELID || settings.discord.channelID).sendMessage(`**${fromName}**: ${message.text}`)
 		.catch(err => console.error("Discord did not accept a text message:", err));
 	}, tgBot));
 
@@ -81,7 +81,7 @@ function setup(tgBot, dcBot) {
 
 			// Send the file when it is fetched
 			fileStream.on("end", () => {
-				dcBot.channels.get(settings.discord.channelID).sendFile(
+				dcBot.channels.get(process.env.DISCORD_CHANNELID || settings.discord.channelID).sendFile(
 					Buffer.concat(buffers),
 					"photo.jpg",	// Telegram will convert it to jpg no matter what filetype is actually sent
 					`**${fromName}**:\n${message.caption}`
@@ -115,7 +115,7 @@ function setup(tgBot, dcBot) {
 
 			// Send the file when it is fetched
 			fileStream.on("end", () => {
-				dcBot.channels.get(settings.discord.channelID).sendFile(
+				dcBot.channels.get(process.env.DISCORD_CHANNELID || settings.discord.channelID).sendFile(
 					Buffer.concat(buffers),
 					message.document.file_name,
 					`**${fromName}**`
@@ -156,7 +156,7 @@ function setup(tgBot, dcBot) {
 
 			// Send the file when it is fetched
 			fileStream.on("end", () => {
-				dcBot.channels.get(settings.discord.channelID).sendFile(
+				dcBot.channels.get(process.env.DISCORD_CHANNELID || settings.discord.channelID).sendFile(
 					Buffer.concat(buffers),
 					message.audio.title + extension,
 					`**${fromName}**`
@@ -197,7 +197,7 @@ function setup(tgBot, dcBot) {
 
 			// Send the file when it is fetched
 			fileStream.on("end", () => {
-				dcBot.channels.get(settings.discord.channelID).sendFile(
+				dcBot.channels.get(process.env.DISCORD_CHANNELID || settings.discord.channelID).sendFile(
 					Buffer.concat(buffers),
 					"video" + extension,
 					`**${fromName}**`
@@ -237,7 +237,7 @@ function setup(tgBot, dcBot) {
 
 			// Send the file when it is fetched
 			fileStream.on("end", () => {
-				dcBot.channels.get(settings.discord.channelID).sendFile(
+				dcBot.channels.get(process.env.DISCORD_CHANNELID || settings.discord.channelID).sendFile(
 					Buffer.concat(buffers),
 					"sticker.png",
 					`**${fromName}**:\n${message.sticker.emoji}`

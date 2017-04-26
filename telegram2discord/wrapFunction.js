@@ -25,7 +25,7 @@ function wrapFunction(func, tgBot) {
 			});
 		} else {
 			// Check if the message came from the correct group
-			if (message.chat.id == settings.telegram.chatID) {
+			if (message.chat.id == (process.env.TELEGRAM_CHATID || settings.telegram.chatID)) {
 				// Yup. Do the thing
 				func(message);
 			} else {
