@@ -94,7 +94,7 @@ function setup(dcBot, tgBot) {
 				// Inform the sender that this is a private bot
 				message.reply("This is an instance of a TediCross bot, bridging a chat in Telegram with one in Discord. If you wish to use TediCross yourself, please download and create an instance. You may ask @Suppen for help");
 			} else {
-				message.reply("I'm a bot and you wrote\n" + message.cleanContent);
+				//message.reply("I'm a bot and you wrote\n" + message.cleanContent);
 			}
 		}
 	});
